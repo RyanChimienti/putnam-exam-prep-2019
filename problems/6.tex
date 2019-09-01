@@ -1,0 +1,9 @@
+\begin{problem}[Engel Problem-Solving Strategies 1.12]
+There is a row of 1000 integers. There is a second row below, which is constructed as follows. Under each number $a$ of the first row, there is a positive integer $f(a)$ such that $f(a)$ equals the number of occurrences of $a$ in the first row. In the same way, we get the 3rd row from the 2nd row, and so on. Prove that, finally, one of the rows is identical to the next row.
+\end{problem}
+
+Let $N(r)$ be the number of distinct integers that appear in the $r$th row, and let $f_r(a)$ be the number of occurrences of the integer $a$ in the $r$th row.
+
+As we move from the $r$th row to the $(r+1)$th row, all occurrences of a number $a$ get replaced by the same number $f_r(a)$, so $N(r) \geq N(r+1)$. Therefore, $N(r)$ is nonincreasing as $r$ grows. But $N(r)$ is at least 1, so eventually it must be unchanging.
+
+Let $s$ be the row where that happens, so that $N(s) = N(s+1) = N(s + 2) = \dots$. In row $s$, call the distinct integers $x_1, x_2, \dots, x_{N(s)}$. Since $N(s+1) = N(s)$, we must have $f_s(x_1), f_s(x_2), \dots, f_s(x_{N(s)})$ all distinct. Thus, in row $s+1$, $f_s(x_1)$ appears only below $x_1$, $f_s(x_2)$ appears only below $x_2$, and so on. It follows that for each $1 \leq i \leq N(s)$, the integer $f_s(x_i)$ appears in row $s+1$ exactly as many times as $x_i$ appears in row $s$. That is, $f_s(x_i)$ appears $f_s(x_i)$ times in row $s + 1$. But that means row $s + 2$ must be identical to row $s + 1$.
