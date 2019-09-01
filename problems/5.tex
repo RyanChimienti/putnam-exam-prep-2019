@@ -1,0 +1,13 @@
+\begin{problem}[Engel Problem-Solving Strategies 1.10]
+The vertices of an $n$-gon are labeled by real numbers $x_1, \dots, x_n$. Let $a, b, c, d$ be four successive labels. If $(a - d)(b - c) < 0$, then we may switch $b$ with $c$. Decide if this switching operation can be performed infinitely often.
+\end{problem}
+
+It cannot.
+
+Consider the sum $$x_1x_2 + x_2x_3 + \dots + x_{n-1}x_n + x_nx_1.$$ Performing the switching operation only affects one part of this sum. Specifically, $$ab + bc + cd$$ becomes $$ac + cb + bd.$$ But we have
+\begin{align*}
+(a-d)(b-c) &< 0 \\
+ab - ac - bd + cd &< 0 \\
+ab + cd &< ac + bd,
+\end{align*}
+so our sum has increased. Since there are only finitely many orderings of labels, these increases cannot go on forever. Therefore, we must eventually eventually run out of legal switches.

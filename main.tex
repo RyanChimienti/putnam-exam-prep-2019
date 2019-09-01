@@ -1,0 +1,76 @@
+\documentclass[12pt]{article}
+\usepackage{mathtools}
+\usepackage{amssymb,amsmath,amsthm,amsfonts}
+\usepackage{thmtools}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{cleveref}
+\usepackage{changepage}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{subfiles}
+\setlength{\parindent}{.75cm}
+
+%Allows me to use begin{thm}, begin{lem}, etc.%
+\newtheorem{thm}{Theorem}
+\crefname{thm}{Theorem}{Theorems}
+\newtheorem{prop}{Proposition}
+\crefname{prop}{Proposition}{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\crefname{lem}{Lemma}{Lemmas}
+
+\declaretheoremstyle[
+	headfont=\normalfont\itshape , 
+	headindent=\parindent]{casestyle}
+\declaretheorem[
+	style=casestyle ,
+	numberwithin=thm]{case}
+\renewcommand{\thecase}{\arabic{case}} %Suppress thm # before case #
+
+\theoremstyle{definition} %All following thm types are non-italics
+\newtheorem*{answer}{Answer}
+\newtheorem{problem}{Problem}
+\surroundwithmdframed[outerlinewidth=0.4pt,
+  innerlinewidth=0.4pt,
+  middlelinewidth=1pt,
+  middlelinecolor=white,
+  leftline=true,
+  bottomline=true,
+  topline=true,
+  rightline=true,
+  skipabove=50pt
+]{problem}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{rem}[thm]{Remark}
+
+%Helpful Shortcuts%
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand*\interior[1]{#1^{\mathsf{o}}}
+\newcommand*\limit[2]{\lim_{#1 \rightarrow #2}}
+\DeclarePairedDelimiter\V{\langle}{\rangle} 
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+
+%Allows me to make use of the \set* command, with a semicolon for the pipe.%
+\usepackage{xparse}
+%
+\DeclarePairedDelimiterX{\set}[1]{\{}{\}}{\setargs{#1}}
+\NewDocumentCommand{\setargs}{>{\SplitArgument{1}{;}}m}
+{\setargsaux#1}
+\NewDocumentCommand{\setargsaux}{mm}
+{\IfNoValueTF{#2}{#1} {#1\,:\,\mathopen{}#2}}%{#1\:;\:#2}
+
+\begin{document}
+
+\subfile{problems/1.tex}
+\pagebreak
+\subfile{problems/2.tex}
+\pagebreak
+\subfile{problems/3.tex}
+\pagebreak
+\subfile{problems/4.tex}
+\pagebreak
+\subfile{problems/5.tex}
+
+\end{document}

@@ -1,0 +1,13 @@
+\begin{document}
+
+\begin{problem}[Engel Problem-Solving Strategies 1.8]
+There is a positive integer in each square of a rectangular table. In each move, you
+may double each number in a row or subtract 1 from each number of a column. Prove
+that you can reach a table of zeros by a sequence of these permitted moves.
+\end{problem}
+
+Choose one of the columns of positive integers. If it is not only 1's, then double all its 1's (by doubling their rows), and finally subtract 1 from the column. This causes any 1's in the column to remain 1's, and the greater integers to decrease by 1. We get a column of positive integers whose maximum is one less than before the operation. Apply this operation repeatedly until the maximum reaches 1, at which point the column is only 1's. Now, subtract 1 from the column to make it 0's.
+
+We have now made one column into 0's. The other columns are still positive integers, since we never subtracted from them. We may therefore apply the same procedure one-by-one to the remaining columns, until all of them are zeroed. Since doubling rows has no effect on a column already turned to 0's, we will never damage any of our previously zeroed columns.
+
+\end{document}

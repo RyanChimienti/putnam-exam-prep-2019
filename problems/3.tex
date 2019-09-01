@@ -1,0 +1,20 @@
+\begin{problem}[Engel Problem-Solving Strategies 1.6]
+There are $a$ white, $b$ black, and $c$ red chips on a table. In one step, you may choose
+two chips of different colors and replace them by a chip of the third color. If just one chip will remain at the end, its color will not depend on the evolution of the game.
+When can this final state be reached?
+\end{problem}
+
+The "final state" can be reached exactly when two conditions are met:
+\begin{enumerate}
+  \item $a$, $b$, and $c$ don't all have the same parity.
+  \item If two of $a$, $b$, and $c$ are 0, then the other is 1.
+\end{enumerate}  
+The last remaining chip will be the color whose parity differs from the other two.
+
+Let us first show that if either of these conditions fails, then the final state cannot be reached. If the second condition fails, then two of $a$, $b$, and $c$ are 0 and the other is not 1. In this situation, we are out of legal moves, and we are not in the final state, so the final state is unreachable. On the other hand, if the first condition fails, then $a, b,$ and $c$ all have the same parity. In this case, a chip exchange involves changing each of $a, b,$ and $c$ by one, so the parities all get reversed, and they are still the same as each other after the exchange. It follows that the colors will always have the same parity, so a configuration with just one chip is unreachable.
+
+It remains to show that if both conditions are met, then the final state can be reached, and the last remaining chip will be the color whose parity differs from the other two. We prove this statement by induction on the number of chips on the table. 
+
+$\textbf{Base cases:}$ If there are 0 chips, then the conditions cannot be met, so the statement is vacuously true. For 1 chip, we are already in the final state, and the last remaining chip has parity different from the other two, so the statement is again true. For two chips, there are 6 cases to check, and the statement can easily be verified for each of those cases.
+
+$\textbf{Induction step:}$ Now let $k \geq 2$ and suppose the statement holds for $k$ chips. Consider a table with $k + 1$ chips, and assume both conditions are met.  Since there is more than one chip, it cannot be the case that some two of $a, b,$ and $c$ are 0 (or else condition 2 would be violated). Thus, we know that the two most numerous colors are both greater than 0. We also know that they are not both 1, or else all three colors would be 1, contradicting condition 1. Thus, of the two most numerous colors, one is greater than 0 and the other is greater than 1. We may then perform a chip exchange, removing from those two colors and adding to the third. Clearly, this leaves at least two nonzero colors, so condition 2 is vacuously true for the $k$ remaining chips. But condition 1 is also true for the $k$ remaining chips, since it was assumed true prior to the chip exchange, and the chip exchange just reversed the three parities. Moreover, the color whose parity is the "odd man out" didn't change. Applying the induction hypothesis to the $k$ remaining chips, we get that the final state can be reached, and the last remaining chip will be the color whose parity differs from the other two.

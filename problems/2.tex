@@ -1,0 +1,21 @@
+\begin{problem}[Putnam 2009 - A1]
+Let $f$ be a real-valued function on the plane such that for every square $ABCD$ in the plane, $f(A) + f(B) + f(C) + f(D) = 0$. Does it follow that $f(P) = 0$ for all points in the plane?
+\end{problem}
+
+The answer is yes. To see this, let $(x, y)$ be an arbitrary point in the plane. Then, we have 
+\begin{align*}
+f(x, y) + f(x+1, y) + f(x, y+1) + f(x+1, y+1) &= 0
+\\
+f(x, y) + f(x-1, y) + f(x-1, y+1) + f(x, y+1) &= 0
+\\
+f(x, y) + f(x-1, y) + f(x-1, y-1) + f(x, y-1) &= 0
+\\
+f(x, y) + f(x+1, y) + f(x+1, y-1) + f(x, y-1) &= 0
+\\
+- \left[ f(x-1, y-1) + f(x+1, y+1) + f(x+1, y-1) + f(x-1, y-1) \right] = -(0) &= 0
+\\
+-2 \left[ f(x, y+1) + f(x+1, y) + f(x, y-1) + f(x-1, y) \right] = -2(0) &= 0.
+\end{align*}
+Adding the equations and simplifying, we get $$4f(x, y) = 0,$$
+which means
+$$f(x, y) = 0.$$

@@ -1,0 +1,41 @@
+\begin{problem}[Putnam 2011 - B1]
+Let $h$ and $k$ be positive integers. Prove that for every
+$\epsilon > 0$, there are positive integers $m$ and $n$ such that
+\[ \epsilon < |h \sqrt{m} - k \sqrt{n}| < 2\epsilon.  \]\end{problem}
+
+Throughout the solution, we will use the following identity (valid for all $n \in \N$):
+$$
+\sqrt{n+1}-\sqrt{n} 
+= \frac{(\sqrt{n+1}-\sqrt{n})(\sqrt{n+1}+\sqrt{n})}{\sqrt{n+1}+\sqrt{n}}
+= \frac{1}{\sqrt{n+1} + \sqrt{n}},
+$$
+We will need the following lemma.
+\begin{lem}
+For all $b \in \N$, we have $$\sqrt{b+2} - \sqrt{b+1} > \frac{1}{2}(\sqrt{b+1} - \sqrt{b}).$$
+\end{lem}
+\begin{proof}
+We have:
+\begin{align*}
+2\sqrt{b} &> 1 > \frac{1}{\sqrt{b+2} + \sqrt{b+1}} 
+= \sqrt{b+2} - \sqrt{b+1}
+\\
+2\sqrt{b+1} + 2\sqrt{b} &> \sqrt{b+2} + \sqrt{b+1}
+\\
+\frac{2}{\sqrt{b+2} + \sqrt{b+1}} &> \frac{1}{\sqrt{b+1} + \sqrt{b}}
+\\
+2(\sqrt{b+2} - \sqrt{b+1}) &> \sqrt{b+1} - \sqrt{b}
+\\
+\sqrt{b+2} - \sqrt{b+1} &> \frac12(\sqrt{b+1} - \sqrt{b}).
+\end{align*}
+\end{proof}
+
+We are now ready to solve the problem. Let $\epsilon > 0$ be given. Choose $s \in \N$ to be large enough that $$\frac{\epsilon}{hks} < \sqrt{2}-1.$$
+This ensures there exists some $b \in \N$ with $$\frac{\epsilon}{hks} < \sqrt{b+1}-\sqrt{b}.$$ Namely, $b = 1$ achieves this. But let us choose $b \in \N$ to be as large as possible so that this inequality holds. (There \textit{is} a largest such $b$, since $\sqrt{b+1}-\sqrt{b} = 1/(\sqrt{b+1}+\sqrt{b})$, which converges to 0 as $b \rightarrow \infty$.)
+
+Now, suppose for contradiction that $$\sqrt{b+1} - \sqrt{b} \geq \frac{2\epsilon}{hks}.$$ Then, by Lemma 1, $$\sqrt{b+2} - \sqrt{b+1} > \frac{1}{2}(\sqrt{b+1} - \sqrt{b}) \geq \frac{\epsilon}{hks},$$ contradicting that $b$ was as large as possible. This establishes that
+$$\frac{\epsilon}{hks} < \sqrt{b+1}-\sqrt{b} < \frac{2\epsilon}{hks}.$$
+Manipulating the inequality gives
+$$\epsilon < hks(\sqrt{b+1}-\sqrt{b}) < 2\epsilon$$
+$$\epsilon < \abs*{hks\sqrt{b+1}-hks\sqrt{b}} < 2\epsilon$$
+$$\epsilon < \abs*{h\sqrt{k^2s^2(b+1)}-k\sqrt{h^2s^2b}} < 2\epsilon.$$
+So we have found satisfactory values for $m$ and $n$.
