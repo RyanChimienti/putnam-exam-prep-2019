@@ -1,0 +1,21 @@
+\begin{problem}[Engel Problem-Solving Strategies 1.14]
+We strike the first digit of the number $7^{1996}$, and then add it to the remaining number. This is repeated until a number with 10 digits remains. Prove that this number has
+two equal digits.
+\end{problem}
+
+Given a positive integer, call its first digit $d$. Striking the first digit means subtracting $d \cdot 10^p$ for some $p \geq 0$. Adding it back means adding $d$. Thus, the whole operation adds 
+\begin{align*}
+-d \cdot 10^p + d &\equiv -d \cdot (1)^p + d \pmod 9 \\
+&\equiv -d + d \pmod 9 \\
+&\equiv 0 \pmod 9.
+\end{align*} 
+Therefore, the value mod 9 of our number is invariant under this operation.
+
+Now suppose for contradiction that, when we arrive at a 10-digit number, it has no two equal digits. Then all the digits from 0 to 9 must appear exactly once. A positive integer is congruent mod 9 to the sum of its digits, so our number is congruent mod 9 to
+\begin{align*}
+0 + 1 + \dots + 9 &= \frac{9(10)}{2} \\
+&\equiv 0 \pmod 9.
+\end{align*}
+Since the striking and adding operations did not change the value mod 9, we must also have our original number $7^{1996}$ divisible by 9. But its only prime factors are 7, so the Fundamental Theorem of Arithmetic forbids this.
+
+
