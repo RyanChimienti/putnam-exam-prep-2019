@@ -1,0 +1,23 @@
+\begin{problem}[Engel Problem-Solving Strategies 1.15]
+There is a checker at point $(1, 1)$ of the lattice $(x, y)$ with $x$, $y$ positive integers. It moves as follows. At any move it may double one coordinate, or it may subtract the smaller coordinate from the larger. Which points of the lattice can the checker reach?
+\end{problem}
+
+It can reach exactly the points $(a, b)$ where $\gcd(a, b)$ is a power of 2.
+
+First, we argue that no other points can be reached. Note that the checker starts at the point $(1, 1)$, whose gcd is a power of 2. Now suppose it is at an arbitrary point $(a, b)$ having gcd a power of 2. Say, $\gcd(a, b) = 2^k$ for some $k \geq 0$. If we perform the first kind of move, the checker goes to $(2a, b)$ or $(a, 2b)$. The gcd either remains $2^k$ or becomes $2^{k+1}$. If we perform the second kind of move, the checker goes to $(a-b, b)$ or $(a, b-a)$, and the gcd remains $2^k$. We see that no matter how we move, the gcd remains a power of 2. Thus, this property is invariant, so no other points can be reached.
+
+It remains to show that for all points $(a, b)$, if $\gcd(a, b)$ is a power of 2, then $(a, b)$ can indeed be reached. We prove this by strong induction on the sum $a + b$.
+
+\textbf{Base Case:} Let $a + b = 2$, and assume $\gcd(a, b)$ is a power of 2. In this case, we must have $(a, b) = (1, 1)$, which can clearly be reached because it our starting position.
+
+\textbf{Induction Step:} Let $k \geq 3$, and assume that for all $2 \leq m < k$, if $a + b = m$ and $\gcd(a, b)$ is a power of 2, then $(a, b)$ can be reached. Now suppose that $a + b = k$ and $\gcd(a, b)$ is a power of 2. We will prove that $(a, b)$ can be reached by considering two cases.
+
+\begin{case}
+$a$ is even or $b$ is even. Without loss of generality, say $a$ is even. Observe that $(\frac{a}{2}, b)$ has gcd a power of 2, and $2 \leq \frac{a}{2} + b < k$. Thus, by hypothesis, $(\frac{a}{2}, b)$ can be reached. But then we can double $\frac{a}2$, reaching $(a, b)$.
+\end{case}
+
+\begin{case}
+$a$ and $b$ are both odd. Then $a$ and $b$ must be distinct, or else we would have $\gcd(a, b) = a$, which is not a power of 2. Without loss of generality, say $a > b$. Then, $\gcd(a + b, b)$ is a power of 2, so $\gcd(\frac{a + b}2, b)$ is a power of 2. Moreover, $2 \leq \frac{a + b}2 + b < a + b = k$. Thus, by hypothesis, $(\frac{a + b}2, b)$ can be reached. Doubling the first coordinate and subtracting the second from it, we reach $(a, b)$.
+\end{case}
+
+
